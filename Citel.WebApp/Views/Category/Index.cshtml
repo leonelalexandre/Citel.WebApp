@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Citel.WebApp.Models.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Categoria</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nova Categoria</a>
+</p>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Detalhes", "ViewCategory", new { id=item.Id }, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Exclui", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
